@@ -1,6 +1,12 @@
 from flask import Flask, render_template,jsonify
 
+
 app = Flask(__name__)
+
+
+
+
+      
 
 JOBS = [{
   
@@ -35,7 +41,8 @@ JOBS = [{
 
 
 @app.route("/")
-def hello_word():
+@app.route("/home")
+def home_page():
   return render_template('home.html',
                         jobs=JOBS,
                         company_name ='Personality')
@@ -43,6 +50,14 @@ def hello_word():
 @app.route("/api /jobs")
 def list_jobs():
   return jsonify(JOBS)
+
+@app.route("/login")
+def login_page():
+  return render_template('login.html')
+
+@app.route("/registration")
+def registration_page():
+  return render_template('registration.html')
 
 
 if __name__ == '__main__':
